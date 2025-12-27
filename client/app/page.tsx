@@ -12,6 +12,7 @@ export default function Home() {
     router.push(`/session/${uniqueId}`);
     router.push(`/live/${uniqueId}`);
 
+    router.push(`/live/${uniqueId}`);
   };
 
   return (
