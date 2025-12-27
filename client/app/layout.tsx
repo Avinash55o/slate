@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "slate",
+  title: "Slate",
   description: "pair program with your buddy.",
 };
 
