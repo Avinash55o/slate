@@ -21,7 +21,7 @@ export default function SessionPage() {
     useEffect(() => {
         if (!sessionCode) return;
 
-        const ws = new WebSocket("ws:https://slate-6n67.onrender.com");
+        const ws = new WebSocket("https://slate-6n67.onrender.com");
         wsRef.current = ws;
 
         ws.onopen = () => {
