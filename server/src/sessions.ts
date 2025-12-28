@@ -35,7 +35,7 @@ export function addUserToSession(sessionId: string, userId: string): SessionUser
     const username = generateUniqueUsername(session.usedUsernames);
     session.usedUsernames.add(username); // need to update the usedUsername after changes
 
-    const user: SessionUser = { id: userId, username, role: newUserRole };
+    const user: SessionUser = { id: userId, username:`User-${userId.slice(0, 4)}`, role: newUserRole };
     session.users.set(userId, user);
 
     return user;

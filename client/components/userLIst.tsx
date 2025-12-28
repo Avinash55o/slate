@@ -36,7 +36,7 @@ export default function UserList({ users }: { users: SessionUser[] }) {
                                     <div className="relative">
                                         {/* Animated Avatar */}
                                         <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white text-lg font-bold shadow-xl group-hover:rotate-3 transition-transform duration-500">
-                                            {user.username.charAt(0).toUpperCase()}
+                                            {(user.username?.[0]|| 'U').toUpperCase()}
                                         </div>
                                         <div className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-slate-900 rounded-full shadow-sm"></div>
                                     </div>
@@ -77,7 +77,7 @@ export default function UserList({ users }: { users: SessionUser[] }) {
                     <div className="flex -space-x-2">
                         {users.slice(0, 4).map((u, i) => (
                             <div key={i} className="w-6 h-6 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[8px] text-white font-bold uppercase">
-                                {u.username.charAt(0)}
+                                {u.username?.[0]?.toUpperCase()||'U'}
                             </div>
                         ))}
                         {users.length > 4 && (

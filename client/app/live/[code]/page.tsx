@@ -5,6 +5,7 @@ import { Notification } from "@/components/notification";
 import { SessionUser } from "@/lib/types";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import UserList from "@/components/userLIst";
 
 export default function SessionPage() {
     const params = useParams();
@@ -124,7 +125,8 @@ export default function SessionPage() {
                 </div>
 
                 <div>
-                    {/* <UserList /> component goes here */}
+                     <UserList users={users} />
+                    
                 </div>
             </div>
         </div>
