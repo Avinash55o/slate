@@ -18,7 +18,50 @@ export default function SessionPage() {
     const wsRef = useRef<WebSocket | null>(null);
 
     useEffect(() => {
+        // 1. Establish Connection
+        const ws = new WebSocket('ws://localhost:8080');
+        wsRef.current = ws;
 
+        ws.onopen = () => {
+            // Joying the session immediately after connecting
+            ws.send(JSON.stringify({ type: 'JOIN', sessionId: sessionCode }));
+        };
+
+        // 2. Listen for Messages
+        ws.onmessage = (event) => {
+            // 3. Parse data
+            const message = JSON.parse(event.data);
+
+            // 4. Filter by type and update state
+            switch (message.type) {
+                case 'INIT':
+                    setCurrentUser({
+                        id: 'temp-id', // Usually server sends the real ID
+                        username: message.username,
+                        role: message.role
+                    });
+                    setCode(message.code);
+                    break;
+
+                case 'UPDATE':
+                    setCode(message.code);
+                    break;
+
+                case 'USER_LIST':
+                    // Updating your beautiful UserList component!
+                    setUsers(message.users);
+                    break;
+
+                case 'NOTIFICATION':
+                    setNofication(message.message);
+                    break;
+            }
+        };
+
+        // Cleanup: close connection when user leaves the page
+        return () => {
+            ws.close();
+        };
     }, [sessionCode]);
 
     const handleCodeChange = (newCode: string) => {
