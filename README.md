@@ -4,8 +4,9 @@ It allows two users to collaboratively edit code in real time, while additional 
 
 No authentication. No accounts. Just share a session code and start coding.
 
-![Screenshot 1](./ss/image02.png)
-![Screenshot 2](./ss/image01.png)
+
+<img width="1913" height="664" alt="image01" src="https://github.com/user-attachments/assets/4ae600e8-092c-41b9-9e0c-1d26b049f022" />
+<img width="1888" height="636" alt="image02" src="https://github.com/user-attachments/assets/c10dc55b-50aa-4590-8d48-7518e537e4ec" />
 
 ### Features
 - No authentication required; join instantly using a session code
