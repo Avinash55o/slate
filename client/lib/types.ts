@@ -1,13 +1,14 @@
 export type UserRole = 'editor' | 'viewer';
 
 export interface SessionUser {
-    id: string;
     username: string;
     role: UserRole;
 }
 
+export type ClientMessage = { type: 'JOIN'; sessionId: string } | { type: 'UPDATE'; code: string };
+
 export type ServerMessage =
-    | { type: 'init'; code: string; username: string; role: UserRole }
-    | { type: 'update'; code: string }
-    | { type: 'notification'; message: string }
-    | { type: 'userList'; users: SessionUser[] };
+    | { type: 'INIT'; code: string; username: string; role: UserRole }
+    | { type: 'UPDATE'; code: string }
+    | { type: 'NOTIFICATION'; message: string }
+    | { type: 'USER_LIST'; users: SessionUser[] };

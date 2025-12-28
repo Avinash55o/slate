@@ -79,7 +79,10 @@ export function getSessionUsers(sessionId: string): SessionUser[] {
 // generates random unique username within session. 
 // every user should have a unique username at least within a session
 function generateUniqueUsername(usedUsernames: Set<string>): string {
-    const available = USERNAME_POOL.filter(name => !usedUsernames.has(name));
-    const random = available[Math.random() * available.length];
-    return random;
+    const available = USERNAME_POOL.filter(
+        name => !usedUsernames.has(name)
+    );
+
+    const index = Math.floor(Math.random() * available.length);
+    return available[index];
 }

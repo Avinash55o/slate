@@ -41,8 +41,8 @@ wss.on("connection", (socket: WebSocket) => {
             socketMeta.set(socket, { sessionId, userId });
 
             //main part
-            const user = addUserToSession(sessionId, userId);
             const session = getOrCreateSession(sessionId);
+            const user = addUserToSession(sessionId, userId);
 
             session.clients.set(user.id, socket)
 
@@ -58,7 +58,7 @@ wss.on("connection", (socket: WebSocket) => {
             broadcast(sessionId, {
                 type: "NOTIFICATION",
                 message: `${user.username} joined the session`,
-            }, user.id);
+            });
 
             // USER LIST to all
             broadcast(sessionId, { type: "USER_LIST", users: getSessionUsers(sessionId) });
